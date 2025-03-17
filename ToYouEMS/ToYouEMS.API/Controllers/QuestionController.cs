@@ -394,6 +394,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
         #region 问题修订和评论 API
 
         // 添加修订/评论
+        // 添加修订/评论的方法修改
         [HttpPost("{id}/revisions")]
         public async Task<IActionResult> AddRevision(int id, QuestionRevisionCreateRequest request)
         {
@@ -406,12 +407,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                 return NotFound(new { message = "问题不存在" });
             }
 
-            //// 只允许老师添加评论和修订
-            //if (userType == UserType.Student.ToString() && request.Type != RevisionType.Answer)
-            //{
-            //    return Forbid();
-            //}
-
+            // 创建新的修订/评论记录
             var revision = new QuestionRevision
             {
                 QuestionID = id,
@@ -424,12 +420,8 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
 
             await _unitOfWork.QuestionRevisions.AddAsync(revision);
 
-            // 如果是教师编辑答案，则更新问题主表的答案字段
-            if (userType == UserType.Teacher.ToString() && request.Type == RevisionType.TeacherEdit)
-            {
-                question.Answer = request.RevisionText;
-                _unitOfWork.Questions.Update(question);
-            }
+            // 删除更新原始答案的逻辑，确保评论只是添加而不修改原始答案
+            // 不再更新问题的Answer字段
 
             await _unitOfWork.CompleteAsync();
 
@@ -478,7 +470,8 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                     RevisionText = r.RevisionText,
                     Type = r.Type,
                     Comments = r.Comments,
-                    CreatedAt = r.CreatedAt
+                    CreatedAt = r.CreatedAt,
+                    UserType = (int)r.User.UserType // 添加用户类型信息
                 })
                 .ToListAsync();
 
