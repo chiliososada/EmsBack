@@ -1,0 +1,22 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/ToYouEMS/Storage/resumes/*
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.vsidx
