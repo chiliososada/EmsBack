@@ -288,7 +288,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             };
 
             await _unitOfWork.Questions.AddAsync(question);
-        //    await _unitOfWork.CompleteAsync();
+            await _unitOfWork.CompleteAsync();
 
             // 如果有答案，创建初始修订记录
             if (!string.IsNullOrEmpty(request.Answer))
@@ -304,7 +304,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                 };
 
                 await _unitOfWork.QuestionRevisions.AddAsync(revision);
-              //  await _unitOfWork.CompleteAsync();
+               await _unitOfWork.CompleteAsync();
             }
 
             // 记录日志
@@ -382,7 +382,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             }
 
             _unitOfWork.Questions.Update(question);
-          //  await _unitOfWork.CompleteAsync();
+            await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
@@ -422,7 +422,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
 
             // 删除问题
             _unitOfWork.Questions.Remove(question);
-            //await _unitOfWork.CompleteAsync();
+            await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log

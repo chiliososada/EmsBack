@@ -145,7 +145,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                 };
 
                 await _unitOfWork.Cases.AddAsync(@case);
-               // await _unitOfWork.CompleteAsync();
+                await _unitOfWork.CompleteAsync();
 
                 // 记录日志
                 await _unitOfWork.Logs.AddAsync(new Log
@@ -195,7 +195,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                 }
 
                 _unitOfWork.Cases.Update(@case);
-              //  await _unitOfWork.CompleteAsync();
+                await _unitOfWork.CompleteAsync();
 
                 // 记录日志
                 await _unitOfWork.Logs.AddAsync(new Log
@@ -259,7 +259,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                 }
 
                 _unitOfWork.Cases.Remove(@case);
-              //  await _unitOfWork.CompleteAsync();
+                await _unitOfWork.CompleteAsync();
 
                 // 记录日志
                 await _unitOfWork.Logs.AddAsync(new Log
