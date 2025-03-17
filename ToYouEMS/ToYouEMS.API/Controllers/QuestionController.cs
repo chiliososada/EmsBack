@@ -221,12 +221,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             }
 
             // 检查权限
-            if (userType == UserType.Student.ToString() &&
-                question.UserID != currentUserId &&
-                question.Status != QuestionStatus.Approved)
-            {
-                return Forbid();
-            }
+
 
             var result = new QuestionDetailDTO
             {
