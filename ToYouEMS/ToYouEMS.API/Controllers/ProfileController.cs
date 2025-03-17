@@ -54,7 +54,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             profile.Hobbies = request.Hobbies;
 
             _unitOfWork.Profiles.Update(profile);
-            await _unitOfWork.CompleteAsync();
+            //await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
@@ -104,7 +104,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             profile.AvatarUrl = avatarUrl;
 
             _unitOfWork.Profiles.Update(profile);
-            await _unitOfWork.CompleteAsync();
+          //  await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
@@ -122,13 +122,13 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
 
     public class ProfileUpdateRequest
     {
-        public string FullName { get; set; }
-        public string Gender { get; set; }
+        public string? FullName { get; set; }
+        public string? Gender { get; set; }
         public DateTime? BirthDate { get; set; }
-        public string BirthPlace { get; set; }
-        public string Address { get; set; }
-        public string Introduction { get; set; }
-        public string Hobbies { get; set; }
+        public string? BirthPlace { get; set; }
+        public string? Address { get; set; }
+        public string? Introduction { get; set; }
+        public string? Hobbies { get; set; }
     }
 
     public class AvatarUploadRequest

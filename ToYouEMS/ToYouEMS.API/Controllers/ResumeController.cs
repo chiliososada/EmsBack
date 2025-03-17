@@ -116,7 +116,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             };
 
             await _unitOfWork.Resumes.AddAsync(resume);
-            await _unitOfWork.CompleteAsync();
+          //  await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
@@ -156,7 +156,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             }
 
             _unitOfWork.Resumes.Remove(resume);
-            await _unitOfWork.CompleteAsync();
+        //    await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
@@ -188,7 +188,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             resume.ReviewerID = userId;
 
             _unitOfWork.Resumes.Update(resume);
-            await _unitOfWork.CompleteAsync();
+         //   await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
