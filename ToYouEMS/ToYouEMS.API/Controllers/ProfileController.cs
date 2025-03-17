@@ -54,7 +54,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             profile.Hobbies = request.Hobbies;
 
             _unitOfWork.Profiles.Update(profile);
-            //await _unitOfWork.CompleteAsync();
+            await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
@@ -104,7 +104,7 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
             profile.AvatarUrl = avatarUrl;
 
             _unitOfWork.Profiles.Update(profile);
-          //  await _unitOfWork.CompleteAsync();
+             await _unitOfWork.CompleteAsync();
 
             // 记录日志
             await _unitOfWork.Logs.AddAsync(new Log
