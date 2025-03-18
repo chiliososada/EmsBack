@@ -46,8 +46,11 @@ namespace ToYouEMS.ToYouEMS.API.Controllers
                 // 声明变量在外部，避免作用域问题
                 int resultTotalCount;
                 int resultPageCount;
-                List<QuestionListItemDTO> resultItems;
-
+                List<QuestionListItemDTO> resultItems;             
+                if (userType == UserType.Student.ToString())
+                {
+                    query = query.Where(q => q.UserID == currentUserId || q.Status == QuestionStatus.Approved);
+                }
                 if (!string.IsNullOrEmpty(queryParams.Position))
                 {
                     try
