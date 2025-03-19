@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Storage\resumes\" />
     <Folder Include="ToYouEMS.Common\Helpers\" />
     <Folder Include="ToYouEMS.Common\Extensions\" />
     <Folder Include="ToYouEMS.Common\Enums\" />
